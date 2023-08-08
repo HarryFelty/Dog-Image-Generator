@@ -1,0 +1,17 @@
+.mainContainer {
+  display: grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px 100px;
+  grid-template-areas:
+    "dogImage1 dogImage2"
+    "dogImage3 dogImage4";
+}
+
+.imgContainer {
+  margin: px;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  border: solid 2px black;
+}
