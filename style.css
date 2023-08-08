@@ -1,0 +1,31 @@
+:root {
+    --univ-page-bg-color: #d8cfb1;
+    --univ-page-txt-color: #38322c;
+    --hdr-bg-default-color: #a48d6f;
+    --hdr-bg-left-color: #5f3e29;
+    --hdr-bg-right-color: var(--univ-page-bg-color);
+    --hdr-txt-left-color: #5f3e29;
+    --hdr-txt-right-color: #b7915d;
+    --hdr-txt-color: #442a2a;
+}
+
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* maybe google fonts later ( TODO ) */
+    background-color: var(--univ-page-bg-color);
+    color: var(--univ-page-txt-color);
+}
+
+header h1 {
+    background-color: var(--hdr-bg-default-color); /* For browsers that do not support gradients */
+    background: radial-gradient(var(--hdr-bg-right-color),var(--hdr-bg-left-color));
+    color: var(--hdr-txt-color);
+    text-align: center;
+    padding: 25px;
+    margin: 0px;
+    font-size: 36pt;
+    font-style: italic;
+}
+
+
+
