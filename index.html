@@ -1,54 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <main class="mainContainer">
-      <div class="imgContainer">
-        <a href="https://www.pexels.com/">
-          <img
-            class="dogImage"
-            id="dogImage1"
-            src="./images/Placeholder.png"
-            alt="Placeholder"
-          />
-        </a>
-      </div>
-      <div class="imgContainer">
-        <a href="https://www.pexels.com/">
-          <img
-            class="dogImage"
-            id="dogImage1"
-            src="./images/Placeholder.png"
-            alt="Placeholder"
-          />
-        </a>
-      </div>
-      <div class="imgContainer">
-        <a href="https://www.pexels.com/">
-          <img
-            class="dogImage"
-            id="dogImage1"
-            src="./images/Placeholder.png"
-            alt="Placeholder"
-          />
-        </a>
-      </div>
-      <div class="imgContainer">
-        <a href="https://www.pexels.com/">
-          <img
-            class="dogImage"
-            id="dogImage1"
-            src="./images/Placeholder.png"
-            alt="Placeholder"
-          />
-        </a>
-      </div>
-    </main>
-    <script src="./script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dog Image Generator</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Dog Image Generator</h1>
+  </header>
+  <div id="flexContainer">
+  <aside>
+    <div id="search">
+      <label for="dogBreed">Select a Dog Breed:</label>
+      <input type="text" id="dogBreed" autocomplete="on">
+      <select name="dogBreed" id="inputList">
+        <option value="dog1">dog 1</option>
+        <option value="dog2">dog 2</option>
+        <option value="dog3">dog 3</option>
+        <option value="dog4">dog 4</option>
+        <option value="dog5">dog 5</option>
+
+      </select>
+      </input>
+      <button id="searchBtn">Generate Images</button>
+    </div>
+    <div id="history">
+      <h2>Recent Searches</h2>
+      <ul>
+        <li>test 1</li>
+        <li>test 2</li>
+        <li>test 3</li>
+        <li>test 4</li>
+        <li>test 5</li>
+      </ul>
+    </div>
+  </aside>
+  <main class="mainContainer">
+    <div class="imgContainer">
+      <a href="https://www.pexels.com/">
+        <img
+          class="dogImage"
+          id="dogImage1"
+          src="./images/Placeholder.png"
+          alt="Placeholder"
+        />
+      </a>
+    </div>
+    <div class="imgContainer">
+      <a href="https://www.pexels.com/">
+        <img
+          class="dogImage"
+          id="dogImage1"
+          src="./images/Placeholder.png"
+          alt="Placeholder"
+        />
+      </a>
+    </div>
+    <div class="imgContainer">
+      <a href="https://www.pexels.com/">
+        <img
+          class="dogImage"
+          id="dogImage1"
+          src="./images/Placeholder.png"
+          alt="Placeholder"
+        />
+      </a>
+    </div>
+    <div class="imgContainer">
+      <a href="https://www.pexels.com/">
+        <img
+          class="dogImage"
+          id="dogImage1"
+          src="./images/Placeholder.png"
+          alt="Placeholder"
+        />
+      </a>
+    </div>
+  </main>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>
