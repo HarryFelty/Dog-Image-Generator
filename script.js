@@ -9,8 +9,8 @@ fetch("https://dog.ceo/api/breeds/list/all")
     .then(function (response) {
         return response.json()
     })
-    .then(function (data) {
-        console.log(data)
+    .then(function (breedList) {
+        console.log(breedList)
 
         //TODO: populate select element with dog breeds
 
@@ -50,6 +50,22 @@ function populateHistory() {
         }
     }
 }
+
+$(function () {
+    const breedList = [
+        'German Shepard',
+        'Siberian Husky ',
+        'Beagle',
+        'Boxer',
+        'English Bulldog',
+        'French Bulldog',
+        'Great Dane',
+
+    ];
+    $('#dogBreed').autocomplete({
+        source: breedList,
+    });
+});
 
 
 //adds event listeners
