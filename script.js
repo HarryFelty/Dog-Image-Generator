@@ -1,6 +1,7 @@
 let searchBtnEl = document.querySelector("#searchBtn");
 let dogBreedEl = document.querySelector("#dogBreed");
 let historyEl = document.querySelector("#history");
+let imageEl = document.querySelectorAll("img");
 let recents = JSON.parse(localStorage.getItem("recents")) || [];
 
 populateHistory();
@@ -29,8 +30,12 @@ function generateImages(breed) {
         })
         .then(function (data) {
             console.log(data)
-
             //TODO: display images
+            let i = 0;
+            for (img of imageEl) {
+                img.setAttribute("src", data.photos[i].src.original);
+                i++;
+            }
         })
 }
 
@@ -71,6 +76,10 @@ $(function () {
 //adds event listeners
 searchBtnEl.addEventListener("click", () => {
     generateImages(dogBreedEl.value);
+
+    let newBtn = document.createElement("button");
+    newBtn.textContent = dogBreedEl.value;
+    historyEl.appendChild(newBtn);
 
     recents.unshift(dogBreedEl.value);
     localStorage.setItem("recents", JSON.stringify(recents));
