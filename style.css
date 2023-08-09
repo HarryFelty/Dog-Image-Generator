@@ -33,10 +33,26 @@ header h1 {
   font-style: italic;
 }
 
+#search label {
+  display: block;
+  font-size: 25px;
+}
+
+#dogBreed {
+  display: block;
+  margin-top: 10px;
+  width: 175px;
+}
+
+#searchBtn {
+  display: block;
+  margin-top: 10px;
+  width: 183px;
+}
+
 #flexContainer {
   display: flex;
   margin-top: 10px;
-  justify-content: space-between;
 }
 
 .mainContainer {
@@ -50,9 +66,27 @@ header h1 {
     "dogImage3 dogImage4";
 }
 
+.boxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+}
+
 .imgContainer {
-  margin: px;
-  overflow-clip-margin: content-box;
-  overflow: clip;
   border: solid 2px black;
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.imgContainer img {
+  max-width: 100%;
+  height: auto;
+}
+.imgContainer a {
+  max-width: 100%;
+  height: 100%;
 }
