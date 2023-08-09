@@ -10,8 +10,13 @@ fetch("https://dog.ceo/api/breeds/list/all")
     .then(function (response) {
         return response.json()
     })
-    .then(function (breedList) {
-        console.log(breedList)
+    .then(function (breedResponse) {
+        let breedArray = arrayFromDogCeoResponse(breedResponse)
+        $(function () {
+            $('#dogBreed').autocomplete({
+                source: breedArray,
+            });
+        });
 
         //TODO: populate select element with dog breeds
 
@@ -23,6 +28,7 @@ function generateImages(breed) {
         headers: {
             "Authorization": "zPGVC6aPEjLHzpDgCHA6NOjBtXPQBP3EoVpQfLUa4ta1ad1oyVxXD51K"
         }
+
     })
         .then(function (response) {
 
@@ -30,7 +36,8 @@ function generateImages(breed) {
         })
         .then(function (data) {
             console.log(data)
-            //TODO: display images
+
+
             let i = 0;
             for (img of imageEl) {
                 img.setAttribute("src", data.photos[i].src.original);
@@ -55,22 +62,6 @@ function populateHistory() {
         }
     }
 }
-
-$(function () {
-    const breedList = [
-        'German Shepard',
-        'Siberian Husky ',
-        'Beagle',
-        'Boxer',
-        'English Bulldog',
-        'French Bulldog',
-        'Great Dane',
-
-    ];
-    $('#dogBreed').autocomplete({
-        source: breedList,
-    });
-});
 
 
 //adds event listeners
