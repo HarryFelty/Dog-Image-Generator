@@ -1,6 +1,7 @@
 let searchBtnEl = document.querySelector("#searchBtn");
 let dogBreedEl = document.querySelector("#dogBreed");
 let historyEl = document.querySelector("#history");
+let imageEl = document.querySelectorAll("img");
 let recents = JSON.parse(localStorage.getItem("recents")) || [];
 
 populateHistory();
@@ -33,16 +34,14 @@ function generateImages(breed) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data.photos)
-            console.log(data.photos[0].src.original)
-            for (let i = 0; i < 4; i++) {
-                let idName = "#dogImage" + [i + 1];
-                let imgElement = document.querySelector(idName);
-
-
-            }
+            console.log(data)
 
             //TODO: display images
+            let i = 0;
+            for (img of imageEl) {
+                img.setAttribute("src", data.photos[i].src.original);
+                i++;
+            }
         })
 }
 
@@ -67,6 +66,10 @@ function populateHistory() {
 //adds event listeners
 searchBtnEl.addEventListener("click", () => {
     generateImages(dogBreedEl.value);
+
+    let newBtn = document.createElement("button");
+    newBtn.textContent = dogBreedEl.value;
+    historyEl.appendChild(newBtn);
 
     recents.unshift(dogBreedEl.value);
     localStorage.setItem("recents", JSON.stringify(recents));
