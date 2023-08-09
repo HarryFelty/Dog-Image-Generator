@@ -1,4 +1,9 @@
-let temp1 = null;
+let searchBtnEl = document.querySelector("#searchBtn");
+let dogBreedEl = document.querySelector("#dogBreed");
+let historyEl = document.querySelector("#history");
+let recents = JSON.parse(localStorage.getItem("recents")) || [];
+
+populateHistory();
 
 fetch("https://dog.ceo/api/breeds/list/all")
     .then(function (response) {
@@ -9,23 +14,42 @@ fetch("https://dog.ceo/api/breeds/list/all")
 
         //TODO: populate select element with dog breeds
 
-        let breedInput = document.querySelector("#dogBreed").value
-        return fetch(`https://api.pexels.com/v1/search?query=${breedInput}%20dog&per_page=4`, {
-            headers: {
-                "Authorization": "zPGVC6aPEjLHzpDgCHA6NOjBtXPQBP3EoVpQfLUa4ta1ad1oyVxXD51K"
-            }
+    })
+
+//calls fetch and passes in appropriate value
+function generateImages(breed) {
+    fetch(`https://api.pexels.com/v1/search?query=${breed}&per_page=4`, {
+        headers: {
+            "Authorization": "zPGVC6aPEjLHzpDgCHA6NOjBtXPQBP3EoVpQfLUa4ta1ad1oyVxXD51K"
+        }
+    })
+        .then(function (response) {
+
+            return response.json()
         })
+        .then(function (data) {
+            console.log(data)
 
-    })
-    .then(function (response) {
+            //TODO: display images
+        })
+}
 
-        return response.json()
-    })
-    .then(function (data) {
-        console.log(data)
-        temp1 = data
-        //TODO: display images
-    })
+//populates search history from local storage
+function populateHistory() {
+    if (recents.length) {
+        let i = 0;
+        for (let recent of recents) {
+            let newBtn = document.createElement("button");
+            newBtn.textContent = recent;
+            historyEl.appendChild(newBtn);
+
+            i++;
+            if (i === 7) {
+                break;
+            }
+        }
+    }
+}
 
 $(function () {
     const breedList = [
@@ -44,4 +68,30 @@ $(function () {
 });
 
 
+//adds event listeners
+searchBtnEl.addEventListener("click", () => {
+    generateImages(dogBreedEl.value);
 
+    recents.unshift(dogBreedEl.value);
+    localStorage.setItem("recents", JSON.stringify(recents));
+
+    dogBreedEl.value = "";
+})
+
+historyEl.addEventListener("click", event => {
+    if (event.target.matches("button")) {
+        generateImages(event.target.textContent);
+    }
+})
+
+function arrayFromDogCeoResponse(resp) {
+    breeds = [];
+    objMembersArray = Object.entries(resp.message);
+    let len = objMembersArray.length;
+    for (let i = 0; i < len; i++) {
+        if (objMembersArray[i].length > 0) {
+            breeds.push(objMembersArray[i][0]);
+        }
+    }
+    return breeds;
+}
