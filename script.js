@@ -28,6 +28,7 @@ function generateImages(breed) {
         headers: {
             "Authorization": "zPGVC6aPEjLHzpDgCHA6NOjBtXPQBP3EoVpQfLUa4ta1ad1oyVxXD51K"
         }
+
     })
         .then(function (response) {
 
@@ -36,7 +37,7 @@ function generateImages(breed) {
         .then(function (data) {
             console.log(data)
 
-            //TODO: display images
+
             let i = 0;
             for (img of imageEl) {
                 img.setAttribute("src", data.photos[i].src.original);
