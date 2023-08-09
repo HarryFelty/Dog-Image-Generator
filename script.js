@@ -51,6 +51,7 @@ function populateHistory() {
     }
 }
 
+
 //adds event listeners
 searchBtnEl.addEventListener("click", () => {
     generateImages(dogBreedEl.value);
@@ -66,3 +67,15 @@ historyEl.addEventListener("click", event => {
         generateImages(event.target.textContent);
     }
 })
+
+function arrayFromDogCeoResponse(resp) {
+    breeds = [];
+    objMembersArray = Object.entries(resp.message);
+    let len = objMembersArray.length;
+    for (let i = 0; i < len; i++) {
+        if (objMembersArray[i].length > 0) {
+            breeds.push(objMembersArray[i][0]);
+        }
+    }
+    return breeds;
+}
