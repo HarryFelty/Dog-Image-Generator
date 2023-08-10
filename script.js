@@ -33,7 +33,6 @@ function generateImages(breed) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data)
 
             if (!data.photos.length) {
                 dogBreedEl.value = "";
@@ -41,6 +40,8 @@ function generateImages(breed) {
             } else {
                 for (let i = 0; i < imageEl.length; i++) {
                     imageEl[i].setAttribute("src", data.photos[i].src.medium);
+                    imageEl[i].setAttribute("alt", data.photos[i].alt);
+                    imageEl[i].parentElement.setAttribute("href",data.photos[i].src.original);
                 }
             }
         });
