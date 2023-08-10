@@ -34,7 +34,7 @@ function generateImages(breed) {
             console.log(data)
 
             for (let i = 0; i < imageEl.length; i++) {
-                imageEl[i].setAttribute("src", data.photos[i].src.original);
+                imageEl[i].setAttribute("src", data.photos[i].src.medium);
             }
         })
 }
