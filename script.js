@@ -2,6 +2,7 @@ let searchBtnEl = document.querySelector("#searchBtn");
 let dogBreedEl = document.querySelector("#dogBreed");
 let historyEl = document.querySelector("#history");
 let imageEl = document.querySelectorAll("img");
+let breedArray = [];
 let recents = JSON.parse(localStorage.getItem("recents")) || [];
 
 populateHistory();
@@ -11,15 +12,12 @@ fetch("https://dog.ceo/api/breeds/list/all")
         return response.json()
     })
     .then(function (breedResponse) {
-        let breedArray = arrayFromDogCeoResponse(breedResponse)
+        breedArray = arrayFromDogCeoResponse(breedResponse)
         $(function () {
             $('#dogBreed').autocomplete({
                 source: breedArray,
             });
         });
-
-        //TODO: populate select element with dog breeds
-
     })
 
 //calls fetch and passes in appropriate value
@@ -28,20 +26,15 @@ function generateImages(breed) {
         headers: {
             "Authorization": "zPGVC6aPEjLHzpDgCHA6NOjBtXPQBP3EoVpQfLUa4ta1ad1oyVxXD51K"
         }
-
     })
         .then(function (response) {
-
             return response.json()
         })
         .then(function (data) {
             console.log(data)
 
-
-            let i = 0;
-            for (img of imageEl) {
-                img.setAttribute("src", data.photos[i].src.original);
-                i++;
+            for (let i = 0; i < imageEl.length; i++) {
+                imageEl[i].setAttribute("src", data.photos[i].src.original);
             }
         })
 }
@@ -49,33 +42,33 @@ function generateImages(breed) {
 //populates search history from local storage
 function populateHistory() {
     if (recents.length) {
-        let i = 0;
-        for (let recent of recents) {
+        for (let i = 0; i < recents.length; i++) {
             let newBtn = document.createElement("button");
-            newBtn.textContent = recent;
+            newBtn.textContent = recents[i];
             historyEl.appendChild(newBtn);
-
-            i++;
-            if (i === 7) {
-                break;
-            }
         }
     }
 }
 
-
 //adds event listeners
 searchBtnEl.addEventListener("click", () => {
-    generateImages(dogBreedEl.value);
+    if (breedArray.indexOf(dogBreedEl.value) === -1) {
+        dogBreedEl.value = "";
+    } else {
+        generateImages(dogBreedEl.value);
 
-    let newBtn = document.createElement("button");
-    newBtn.textContent = dogBreedEl.value;
-    historyEl.appendChild(newBtn);
+        let newBtn = document.createElement("button");
+        newBtn.textContent = dogBreedEl.value;
+        historyEl.prepend(newBtn);
 
-    recents.unshift(dogBreedEl.value);
-    localStorage.setItem("recents", JSON.stringify(recents));
+        recents.unshift(dogBreedEl.value);
+        if (recents.length > 7) {
+            recents.pop();
+        }
+        localStorage.setItem("recents", JSON.stringify(recents));
 
-    dogBreedEl.value = "";
+        dogBreedEl.value = "";
+    }
 })
 
 historyEl.addEventListener("click", event => {
