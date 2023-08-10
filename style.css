@@ -30,6 +30,10 @@ header h1 {
   font-style: italic;
 }
 
+h3 {
+  color: red;
+}
+
 #search label {
   display: block;
   font-size: 25px;
@@ -45,6 +49,11 @@ header h1 {
   display: block;
   margin-top: 10px;
   width: 183px;
+}
+
+#myModal {
+  background-color: #a48d6f8c;
+  font-size: 125%;
 }
 
 button {
