@@ -40,7 +40,7 @@ function generateImages(breed) {
 
             let i = 0;
             for (img of imageEl) {
-                img.setAttribute("src", data.photos[i].src.original);
+                img.setAttribute("src", data.photos[i].src.medium);
                 i++;
             }
         })
