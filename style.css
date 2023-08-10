@@ -20,10 +20,8 @@
 header h1 {
   background-color: var(--hdr-bg-default-color);
   /* For browsers that do not support gradients */
-  background: radial-gradient(
-    var(--hdr-bg-right-color),
-    var(--hdr-bg-left-color)
-  );
+  background: radial-gradient(var(--hdr-bg-right-color),
+      var(--hdr-bg-left-color));
   color: var(--hdr-txt-color);
   text-align: center;
   padding: 25px;
