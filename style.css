@@ -21,16 +21,18 @@ body {
 
 header h1 {
   background-color: var(--hdr-bg-default-color);
-  background: radial-gradient(
-    var(--hdr-bg-right-color),
-    var(--hdr-bg-left-color)
-  );
+  background: radial-gradient(var(--hdr-bg-right-color),
+      var(--hdr-bg-left-color));
   color: var(--hdr-txt-color);
   text-align: center;
   padding: 25px;
   margin: 0px;
   font-size: 36pt;
   font-style: italic;
+}
+
+h3 {
+  color: red;
 }
 
 #sidebarContainer {
@@ -56,6 +58,11 @@ h2 {
   display: block;
   margin-top: 10px;
   width: 183px;
+}
+
+#myModal {
+  background-color: #a48d6f8c;
+  font-size: 125%;
 }
 
 button {
