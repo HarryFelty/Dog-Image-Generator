@@ -43,7 +43,7 @@ function generateImages(breed) {
                     imageEl[i].setAttribute("src", data.photos[i].src.medium);
                 }
             }
-        })
+        });
 }
 
 //populates search history from local storage
