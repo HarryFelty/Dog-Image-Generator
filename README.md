@@ -80,6 +80,37 @@ a user/viewer to select a dog breed of interest and then be presented with pictu
   that resulted. Clicking on any of these images results in jumping to a new page showing only the one
   selected image, but at a higher quality than was displayed on the main page.
 
+### Sample Screens from Site
+
+- page on initial load
+
+![initial state](./doc_imgs/dogs01.png)
+
+- auto-completion of user breed selection
+
+![selection auto-complete](./doc_imgs/dogs02.png)
+
+- after breed selected
+
+![breed selection](./doc_imgs/dogs03.png)
+
+- after clicking button to get images
+
+![images generated](./doc_imgs/dogs04.png)
+
+- after clicking on specific image to get higher-quality image
+
+![high-quality image](./doc_imgs/dogs05.png)
+
+- after using one of the "Recent Searches" buttons
+
+![breed selection from button](./doc_imgs/dogs06.png)
+
+- display format for mobile devices
+
+![for mobile device](./doc_imgs/dogs07.png)
+
+
 ## Credits
 
 Special thanks to the teaching staff of the University of Pennsylvania Full Stack Coding Boot Camp (UPENN-VIRT-FSF-FT-07-2023-U-LOLC-M-F).
